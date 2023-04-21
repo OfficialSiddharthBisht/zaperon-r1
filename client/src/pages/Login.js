@@ -11,7 +11,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const theme = createTheme();
-
 export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
