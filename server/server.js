@@ -1,10 +1,11 @@
 const app = require("./app");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv")
+const connectDatabase = require("./config/database");
+
 
 // config
 dotenv.config({ path: "./config/config.env" });
-const port = process.env.PORT || 3005;
-
+const port = process.env.PORT || 3000;
 
 // Handling Uncaught Exception (using a variable which is not defined)
 process.on("uncaughtException", (err) => {
@@ -12,6 +13,13 @@ process.on("uncaughtException", (err) => {
     console.log(`Shutting down the server due to uncaught exception`);
     process.exit(1);
 })
+
+
+
+// Connect Database
+connectDatabase();
+
+
 
 const server = app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
