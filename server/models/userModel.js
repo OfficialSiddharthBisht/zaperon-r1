@@ -27,6 +27,15 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpire: Date,
 });
 
+userSchema.pre("save", async function (next) {
+    // if we have already changed the password then the field will be already encrypted
+    if (!this.isModified("password")) {
+        next();
+    }
+    this.password = await bcrypt.hash(this.password, 12);
+
+})
+
 
 // Jwt Token
 userSchema.methods.getJWTToken = async function () {
@@ -37,7 +46,7 @@ userSchema.methods.getJWTToken = async function () {
 
 // Compare Password
 userSchema.methods.comparePassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password);
+    return await bcrypt.compare(enteredPassword.trim(), this.password.trim());
 }
 
 // Password reset token generate

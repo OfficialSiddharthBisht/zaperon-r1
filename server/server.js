@@ -1,10 +1,9 @@
 const app = require("./app");
-const dotenv = require("dotenv")
+
 const connectDatabase = require("./config/database");
 
+require("dotenv").config();
 
-// config
-dotenv.config({ path: "./config/config.env" });
 const port = process.env.PORT || 3000;
 
 // Handling Uncaught Exception (using a variable which is not defined)
