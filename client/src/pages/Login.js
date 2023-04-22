@@ -9,24 +9,42 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import axios from "axios";
 
 const theme = createTheme();
 export default function SignIn() {
-  const handleSubmit = (event) => {
+
+  const [email, setEmail] = React.useState(""); 
+  const [password, setPassword] = React.useState(""); 
+
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    setEmail(data.get("email"))
+    setPassword(data.get("password"))
+    console.log(email, password);
+
+    try{
+      await axios.post("https://tender-ruby-eagle.cyclic.app/api/v1/login",{
+        payload :{
+          email,
+          password
+        }
+      })
+    }
+    catch(e){
+      console.log(e);
+    }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
           sx={{
+            margin:"10%",
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
@@ -51,6 +69,7 @@ export default function SignIn() {
           >
             <TextField
               margin="normal"
+              size="small"
               required
               fullWidth
               id="email"
@@ -61,6 +80,7 @@ export default function SignIn() {
             />
             <TextField
               margin="normal"
+              size="small"
               required
               fullWidth
               name="password"
