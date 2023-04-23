@@ -24,8 +24,7 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
     setEmail(data.get("email"))
     setPassword(data.get("password"))
-    console.log(email, password);
-
+    
     try{
       await axios.post("https://tender-ruby-eagle.cyclic.app/api/v1/login",{
         payload :{
@@ -35,8 +34,8 @@ export default function SignIn() {
       }).then((res)=>{
         console.log(res);
         if(res.status === 200 && res.data.token){
-          console.log("Verified");
-          navigate("/")
+          localStorage.setItem("accessToken",res.data.token)
+          navigate("/greet")
         }
       })
     }
@@ -44,6 +43,13 @@ export default function SignIn() {
       console.log(e);
     }
   };
+
+  React.useEffect(()=>{
+    if(localStorage.getItem("accessToken",null) !== null && localStorage.getItem("accessToken",null) !== undefined){
+      console.log('greet');
+      navigate("/greet")
+    }
+  })
 
   return (
     <ThemeProvider theme={theme}>
