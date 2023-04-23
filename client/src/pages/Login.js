@@ -10,10 +10,11 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
 const theme = createTheme();
 export default function SignIn() {
-
+  const history = useNavigate();
   const [email, setEmail] = React.useState(""); 
   const [password, setPassword] = React.useState(""); 
 
@@ -31,6 +32,8 @@ export default function SignIn() {
           email,
           password
         }
+      }).then((res)=>{
+        console.log(res);
       })
     }
     catch(e){
