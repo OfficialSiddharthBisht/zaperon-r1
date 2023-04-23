@@ -5,7 +5,7 @@ const Footer = () => {
     <div id='footer'>
         <div id='f1'>
             <p> Powered By </p> 
-            <img src='./logo.png'></img>
+            <img src='./logo.png' alt='zaperon'></img>
         </div>
         <div id='f2'>
             <p>Need Help? </p>

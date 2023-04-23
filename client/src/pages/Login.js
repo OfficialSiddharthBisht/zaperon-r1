@@ -65,7 +65,7 @@ export default function SignIn() {
           }}
         >
           <div style={{backgroundColor:"#EFEFEF", borderRadius:"50%" ,padding:"15px"}}>
-            <img src = "./user.png" />
+            <img src = "./user.png" alt="User"/>
           </div>
             {/* <AccountCircleOutlinedIcon color="primary" sx={{bgcolor:"whitesmoke",borderRadius:"50%",}}/> */}
           <Typography component="h1" variant="h2">

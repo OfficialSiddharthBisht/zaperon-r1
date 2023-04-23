@@ -1,5 +1,4 @@
-import React,{useState} from 'react'
-import {useLocation, useNavigate} from 'react-router-dom'
+import React from 'react'
 
 const Greetings = () => {
   const userName = localStorage.getItem("username")
