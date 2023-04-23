@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
 
@@ -35,6 +34,7 @@ export default function SignIn() {
         console.log(res);
         if(res.status === 200 && res.data.token){
           localStorage.setItem("accessToken",res.data.token)
+          localStorage.setItem("username",res.data.user.name)
           navigate("/greet")
         }
       })
@@ -64,7 +64,10 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-            <AccountCircleOutlinedIcon color="primary" sx={{bgcolor:"whitesmoke",borderRadius:"50%",}}/>
+          <div style={{backgroundColor:"#EFEFEF", borderRadius:"50%" ,padding:"15px"}}>
+            <img src = "./user.png" />
+          </div>
+            {/* <AccountCircleOutlinedIcon color="primary" sx={{bgcolor:"whitesmoke",borderRadius:"50%",}}/> */}
           <Typography component="h1" variant="h2">
             Welcome!
           </Typography>

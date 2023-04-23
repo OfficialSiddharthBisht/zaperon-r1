@@ -1,0 +1,32 @@
+
+#footer{
+       display: flex;
+       justify-content: space-between;
+       position: fixed;
+       border: 5px;
+       bottom: 0;
+       width: 100%;
+}
+#footer div{
+    display: flex;    
+    align-content: space-between;
+}
+#f1{
+    color:#728391
+}
+
+#f2{
+    color: #003FB9;
+    font-weight: bold;
+}
+
+#footer div img{
+    padding: 15px;
+}
+#greetings{
+    display: flex;
+    align-items: center;
+    margin-top: 30vh;
+    justify-content: center;
+    padding: 5%;
+}
