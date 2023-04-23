@@ -14,7 +14,7 @@ import {useNavigate} from 'react-router-dom'
 
 const theme = createTheme();
 export default function SignIn() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = React.useState(""); 
   const [password, setPassword] = React.useState(""); 
 
@@ -34,6 +34,10 @@ export default function SignIn() {
         }
       }).then((res)=>{
         console.log(res);
+        if(res.status === 200 && res.data.token){
+          console.log("Verified");
+          navigate("/")
+        }
       })
     }
     catch(e){

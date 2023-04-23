@@ -1,9 +1,13 @@
 import React from 'react'
-
+import {useLocation, useNavigate} from 'react-router-dom'
 
 const Greetings = () => {
   return (
-    <div>Greetings</div>
+    <div>
+     <h1>
+      Hello ,welcome
+     </h1>
+    </div>
   )
 }
 
